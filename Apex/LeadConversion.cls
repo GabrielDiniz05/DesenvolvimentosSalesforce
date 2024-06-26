@@ -1,8 +1,3 @@
-/**
- * @description  : Classe contendo a lógica para a conversão automática de Leads
- * @jira         : https://jfoxagil.atlassian.net/browse/SND-63
- * @author       : Gabriel Diniz, Jéssica Lima
-**/
 public class LeadConversion {
 	
 	public class entradaFlow{

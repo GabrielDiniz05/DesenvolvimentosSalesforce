@@ -1,8 +1,3 @@
-/**
- * @description  : Classe contendo a lógica para  fazer o merge dos contatos duplicados
- * @jira         : https://jfoxagil.atlassian.net/browse/SND-63
- * @author       : Gabriel Diniz, Jéssica Lima
-**/
 public class MergeRecords {
 
 	public class EntradaFlow{
@@ -10,11 +5,6 @@ public class MergeRecords {
 		public Id DuplicateRecordSetId;
 	}
 
-	/**
-	* @description 
-	* @author	Hugo Mendes | 2023-12-15 
-	* @param	Lista criada no flow que converte o lead com IDs de DuplicateRecordSet. 
-	**/
 	@InvocableMethod(label='Merge Contatos Duplicados' description='Merge dos contatos duplicados')
 	public static void mergeContacts(List<EntradaFlow> entradas){
 		Set<Id> duplicateRecordSet = new Set<Id>();

@@ -1,8 +1,3 @@
-/**
- * @description  : Classe para testar os métodos da classe LeadConversion
- * @jira         : https://jfoxagil.atlassian.net/browse/SND-63
- * @author       : Josiane Alves, Jéssica Lima
-**/
 @isTest
 public class LeadConversionTest {
 

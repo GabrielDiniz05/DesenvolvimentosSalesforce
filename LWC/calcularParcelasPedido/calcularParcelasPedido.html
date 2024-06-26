@@ -1,0 +1,59 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:customer_portal_users" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h1 class="slds-card__header-title">
+                  <span style="font-size: 16px;"><b>Banco Duplicata - Parcelas Pedido({orderNumber})</b></span>
+              </h1>
+            </div>
+          </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Numero das parcelas">Nº das parcelas</div>
+                        </th>
+                        <th class="" scope="col">
+                            <div class="slds-truncate" title="Valor das parcelas">Valor das parcelas</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="slds-hint-parent" >
+                        <th  data-label="Numero das parcelas" scope="row">
+                            <div class="slds-truncate" title="Numero da parcela">1</div>
+                        </th>
+                        <td data-label="Valor das parcelas">
+                            <div class="slds-truncate" title="Valor da Parcela">
+                                <lightning-input type="number" formatter="currency" onchange={recalcularParcelas} value={valor} step="0.01"></lightning-input>
+                            </div>
+                        </td>                
+                    </tr>
+                    <template for:each={parcelas} for:item="parcela">
+                        <tr key={parcela.numero} class="slds-hint-parent" >
+                            <th  data-label="Numero das parcelas" scope="row">
+                                <div class="slds-truncate" title="Numero da parcela">{parcela.numero}</div>
+                            </th>
+                            <td data-label="Valor das parcelas">
+                                <lightning-formatted-number format-style="currency" currency-code="BRL" value={parcela.valor}></lightning-formatted-number>  
+                            </td>                
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            <br>
+            <h1 class="slds-card__header-title" style="font-size: 16px;">Total do Pedido:&nbsp;
+                <lightning-formatted-number format-style="currency" currency-code="BRL" value={totalPedido}></lightning-formatted-number>
+            </h1>
+        </div>
+        <footer class="slds-card__footer">
+            <lightning-button variant="brand" label="Salvar" title="Salvar desativado" disabled={saved} onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+        </footer>
+    </article>
+</template>

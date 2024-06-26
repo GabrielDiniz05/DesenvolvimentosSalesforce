@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="PDFs" icon-name="doctype:pdf">
+
+        <div class="slds-grid slds-grid_vertical slds-p-horizontal_medium">
+            <div class="slds-col">
+                <lightning-button-group>
+                    <lightning-button icon-name="utility:arrow_bottom" label="Pedido Simples" onclick={gerarPedidoSimples}></lightning-button>
+                    <lightning-button icon-name="utility:arrow_bottom" label="Pedido Completo" onclick={gerarPedidoCompleto}></lightning-button>
+                </lightning-button-group>
+            </div>
+            <div class="slds-col"><br></div>
+            <div class="slds-col">
+                <lightning-button-group>
+                    <lightning-button icon-name="utility:arrow_bottom" label="Pedido Simples Revenda" onclick={gerarComissaoRevenda}></lightning-button>
+                    <lightning-button icon-name="utility:arrow_bottom" label="Pedido Completo Revenda" onclick={gerarPedidoCompletoRevenda}></lightning-button>
+                </lightning-button-group>
+            </div>
+        </div>
+    </lightning-card>
+</template>

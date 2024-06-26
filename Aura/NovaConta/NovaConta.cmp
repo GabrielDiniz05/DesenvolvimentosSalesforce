@@ -1,0 +1,51 @@
+<aura:component
+	implements="lightning:actionOverride,force:hasRecordId,force:hasSObjectName,force:lightningQuickActionWithoutHeader,lightning:hasPageReference"
+	access="global"
+	controller="NovaContaController">
+	
+	<aura:attribute name="pessoa_juridica" type="String" />
+	<aura:attribute name="conta_pessoal" type="String" />
+	<aura:attribute name="abrir_tela" type="Boolean" default="false"/>
+    
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+	
+	<aura:attribute name="calling_fasttrack" type="Boolean" default="false" />
+	<aura:attribute name="fields" type="String[]" default="['CNPJ__c']"/>
+	<aura:attribute name="personFields" type="String[]" default="['FirstName', 'LastName']"/>
+	<aura:attribute name="selectedRecordId" type="String" />
+
+    <!--<aura:if isTrue="{!v.abrir_tela}">-->
+    <aura:if isTrue="{!v.abrir_tela}">
+		<lightning:card>
+			<lightning:recordForm
+                aura:id="newButtonForm"
+                objectApiName="Account"
+                fields="{!v.fields}"
+                mode="edit"
+                columns="1"
+                onsubmit="{!c.handleSubmit}"
+				oncancel="{!c.handleCancel}"/>
+	
+			<aura:if isTrue="{!v.calling_fasttrack}">
+				<lightning:spinner alternativeText="Buscando dados na Receita Federal" size="large"/>
+			</aura:if>
+		</lightning:card>
+        
+		<aura:set attribute="else">
+            <lightning:card>
+			<lightning:recordForm
+                aura:id="newButtonForm"
+                objectApiName="Account"
+                fields="{!v.personFields}"
+                mode="edit"
+                columns="1"
+                onsubmit="{!c.handleSubmit}"
+				oncancel="{!c.handleCancel}"/>
+                
+			<aura:if isTrue="{!v.calling_fasttrack}">
+				<lightning:spinner alternativeText="Buscando dados na Receita Federal" size="large"/>
+			</aura:if>
+		</lightning:card>
+        </aura:set>
+    </aura:if>
+</aura:component>
